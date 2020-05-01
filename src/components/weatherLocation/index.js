@@ -32,7 +32,6 @@ class WeatherLocation extends Component {
         return resolve.json();
       })
       .then((data) => {
-        console.log(data)
         const newWeather = transformWeather(data);
         this.setState({
           data: newWeather,

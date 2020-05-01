@@ -1,0 +1,14 @@
+
+@media screen and (max-width: 64em) {
+  .locationList {
+    max-height: 30vh;
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+}
+
+.forecastTitle {
+  color: #666;
+  text-align: center;
+  padding: 15px 0;
+}

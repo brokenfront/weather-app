@@ -1,11 +1,12 @@
-import React from "react";
-import Paper from "@material-ui/core/Paper"
-import AppBar from "@material-ui/core/AppBar"
-import Typography from "@material-ui/core/Typography"
-import Toolbar from "@material-ui/core/Toolbar"
+import React, { useState } from "react";
+import Paper from "@material-ui/core/Paper";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import Toolbar from "@material-ui/core/Toolbar";
 import { Grid, Col, Row } from "react-flexbox-grid";
 import "./App.css";
 import LocationList from "./components/LocationList.component";
+import ForecastExtended from "./components/ForecastExtended.component";
 
 const cities = [
   "medellín,co",
@@ -17,13 +18,15 @@ const cities = [
 ];
 
 function App() {
+  const [selectedCity, setSelectedCity] = useState(null);
+
   const handleSelectedLocation = (city) => {
-    console.log(`handleSelectedLocation ${city}`);
+    setSelectedCity(city);
   };
 
   return (
     <Grid>
-      <AppBar position='sticky'>
+      <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h6" color="inherit">
             Weather App
@@ -38,9 +41,9 @@ function App() {
           />
         </Col>
         <Col xs={12} md={6}>
-          <Paper elevation={4}>
+          <Paper zdepth={4}>
             <div className="details">
-              hola
+              {selectedCity && <ForecastExtended city={selectedCity} />}
             </div>
           </Paper>
         </Col>
