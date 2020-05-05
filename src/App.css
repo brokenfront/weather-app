@@ -4,6 +4,15 @@
 
 .details {
   background-color: #fefefe;
-  height: 100vh;
+  height: calc(100vh - 64px);
   width: 100%;
+  overflow: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 64em) {
+  .details {
+    height: 50vh;
+  }
 }

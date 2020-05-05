@@ -1,9 +1,10 @@
-
+.locationList {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
 @media screen and (max-width: 64em) {
   .locationList {
-    max-height: 30vh;
-    overflow: auto;
-    margin-bottom: 20px;
+    height: calc(50vh - 64px);
   }
 }
 
