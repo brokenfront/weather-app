@@ -4,22 +4,6 @@ import "./styles.css";
 import ForecastItem from "./forecastItem/index";
 import transformForecast from "../services/transformForecast.service";
 
-// const days = [
-//   'Lunes',
-//   'Martes',
-//   'Miércoles',
-//   'Jueves',
-//   'Viernes',
-//   'Sábado',
-//   'Domingo',
-// ];
-// const data = {
-//   temperature: 10,
-//   humidity: 10,
-//   weatherState: 'normal',
-//   wind: 10
-// }
-
 const api_key = "50210048b80d62b73d365cdfb22f0f49";
 const url = "http://api.openweathermap.org/data/2.5/forecast";
 
@@ -27,6 +11,8 @@ const ForecastExtended = ({ city }) => {
   const [forecastData, setForecastData] = useState(null);
 
   useEffect(() => {
+    //loader on change city
+    setForecastData(null)
     //fetch or axios
     const url_forecast = `${url}?q=${city}&appid=${api_key}`;
     fetch(url_forecast)
@@ -35,7 +21,7 @@ const ForecastExtended = ({ city }) => {
         const forecastData = transformForecast(data);
         setForecastData(forecastData);
       });
-  }, []);
+  }, [city]);
 
   const renderForecastItemDays = (forecastData) => {
     return forecastData.map((forecast) => (

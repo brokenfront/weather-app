@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +8,7 @@ import { Grid, Col, Row } from "react-flexbox-grid";
 import "./App.css";
 import LocationList from "./components/LocationList.component";
 import ForecastExtended from "./components/ForecastExtended.component";
+import { setCity } from "./actions";
 
 const cities = [
   "medellín,co",
@@ -17,11 +19,14 @@ const cities = [
   "Madrid, es",
 ];
 
-function App() {
+
+
+function App(props) {
   const [selectedCity, setSelectedCity] = useState(null);
 
   const handleSelectedLocation = (city) => {
     setSelectedCity(city);
+    props.setCity(city);
   };
 
   return (
@@ -52,4 +57,10 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToPropsActions = dispatch => ({
+  setCity: value => dispatch(setCity(value))
+});
+
+const AppConnected = connect(null, mapDispatchToPropsActions)(App)
+
+export default AppConnected
